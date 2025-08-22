@@ -1,5 +1,9 @@
 # Collatz Total Stopping Time Predictor
 
+[![Python](https://img.shields.io/badge/python-3.6%2B-blue.svg)](https://www.python.org/downloads/)
+[![License](https://img.shields.io/badge/license-CC--BY--NC--SA%204.0-green.svg)](https://github.com/hhvvjj/collatz-tuple-based-transform-calculator/blob/main/LICENSE)
+[![Research](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.15546925-orange.svg)](https://doi.org/10.5281/zenodo.15546925)
+
 ## Overview
 
 This project implements an advanced algorithm to predict the total stopping time of Collatz sequences using pre-computed "wormhole" patterns. The wormhole optimization significantly reduces computation time by jumping directly to known sequence endings when specific entry points are detected.
