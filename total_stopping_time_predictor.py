@@ -1859,11 +1859,11 @@ def print_usage():
     
     Available Commands Documented:
         1. Single Number Analysis:
-           - Syntax: python script.py <n>
+           - Syntax: python total_stopping_time_predictor.py <n>
            - Purpose: Analyze one specific number with full comparison
         
         2. Sequence Equivalence Testing:
-           - Syntax: python script.py --test-sequences <max_n>
+           - Syntax: python total_stopping_time_predictor.py --test-sequences <max_n>
            - Purpose: Validate algorithm correctness across a range
     
     Examples:
@@ -1871,9 +1871,9 @@ def print_usage():
         # Outputs complete usage documentation
         
         Typical usage scenarios:
-        - User needs help: python script.py (no args) → calls print_usage()
-        - User wants analysis: python script.py 27
-        - User wants validation: python script.py --test-sequences 1000
+        - User needs help: python total_stopping_time_predictor.py (no args) → calls print_usage()
+        - User wants analysis: python total_stopping_time_predictor.py 27
+        - User wants validation: python total_stopping_time_predictor.py --test-sequences 1000
     
     Notes:
         - This function is automatically called when insufficient arguments provided
@@ -1884,16 +1884,16 @@ def print_usage():
         - Should be updated whenever new commands are added
     """
     print("Usage:")
-    print("  python simple_collatz_predictor.py <n>")
-    print("  python simple_collatz_predictor.py --test-sequences <max_n>")
+    print("  python total_stopping_time_predictor.py <n>")
+    print("  python total_stopping_time_predictor.py --test-sequences <max_n>")
     print()
     print("Commands:")
     print("  <n>                      Analyze single number")
     print("  --test-sequences <max_n> Test sequences equivalence from 1 to max_n")
     print()
     print("Examples:")
-    print("  python simple_collatz_predictor.py 27")
-    print("  python simple_collatz_predictor.py --test-sequences 1000")
+    print("  python total_stopping_time_predictor.py 27")
+    print("  python total_stopping_time_predictor.py --test-sequences 1000")
 
 def main():
     """
@@ -1926,15 +1926,15 @@ def main():
         - 1: Invalid arguments, input errors, or execution failures
     
     Command Line Formats:
-        1. python script.py <n>
+        1. python total_stopping_time_predictor.py <n>
            - Performs complete analysis of number n
            - Displays sequences, wormhole info, validation, and efficiency
         
-        2. python script.py --test-sequences <max_n>
+        2. python total_stopping_time_predictor.py --test-sequences <max_n>
            - Tests algorithm equivalence for range [1, max_n]
            - Validates wormhole correctness across multiple inputs
         
-        3. python script.py
+        3. python total_stopping_time_predictor.py
            - Displays usage information and exits
     
     Error Handling:
@@ -1945,16 +1945,16 @@ def main():
     
     Examples:
         Command line usage:
-        $ python simple_collatz_predictor.py 27
+        $ python total_stopping_time_predictor.py 27
         # Analyzes n=27 with full comparison
         
-        $ python simple_collatz_predictor.py --test-sequences 100
+        $ python total_stopping_time_predictor.py --test-sequences 100
         # Tests equivalence for n=1 to n=100
         
-        $ python simple_collatz_predictor.py
+        $ python total_stopping_time_predictor.py
         # Shows usage information
         
-        $ python simple_collatz_predictor.py invalid_input
+        $ python total_stopping_time_predictor.py invalid_input
         # Shows usage and exits with error
     
     Notes:
