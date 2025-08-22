@@ -227,7 +227,7 @@ DICTIONARY = {
     },
 }
 
-# Custom exceptions for specific error handling
+# Custom exceptions for specific error handli   ng
 class ValidationError(Exception):
     pass
 
@@ -1821,11 +1821,9 @@ def display_efficiency_table(standard_result: Dict, wormhole_result: Dict) -> No
     if saved_steps > 0 and standard_time > 0:
         # Case: Wormhole optimization was successfully applied
         saved_pct = (saved_steps / standard_time) * 100
-        efficiency_gain = "Well-known entry point detected to access a wormhole"
     else:
         # Case: No wormhole optimization available or applied
         saved_pct = 0.0
-        efficiency_gain = "Well-known entry point not detected to access a wormhole"
     
     # Display wormhole algorithm row with color-coded optimization breakdown
     # Orange for computed steps, green for saved steps
