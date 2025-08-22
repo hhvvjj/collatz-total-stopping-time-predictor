@@ -7,7 +7,7 @@
 
 # Standard library imports
 import sys
-from typing import Dict, Union, Optional
+from typing import Dict, Union
 
 # Configuration constants
 MAX_COMPUTATION_STEPS = 10000      # Safety limit to prevent infinite loops in sequence generation
