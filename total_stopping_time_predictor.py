@@ -1842,10 +1842,11 @@ def print_usage():
     total stopping time predictor with wormhole optimization.
     
     The usage information includes:
-    - Command syntax and parameter requirements
-    - Available operation modes (single analysis vs batch testing)
-    - Practical examples with real inputs
-    - Clear explanations of each command's purpose
+    - Command syntax and parameter requirements for all operations
+    - Available operation modes (single analysis, batch testing, help requests)
+    - Practical examples with real inputs and expected behaviors
+    - Clear explanations of each command's purpose and use cases
+    - Multiple ways to access help information
     
     Args:
         None: This function requires no parameters.
@@ -1857,14 +1858,17 @@ def print_usage():
         1. Usage Syntax Section:
            - Command format for single number analysis
            - Command format for sequence equivalence testing
+           - Command format for help requests (multiple variants)
         
         2. Commands Description Section:
            - Detailed explanation of each available command
            - Parameter requirements and formats
+           - Help system access methods
         
         3. Examples Section:
            - Practical examples showing real command usage
            - Different scenarios and use cases
+           - Error handling demonstrations
     
     Available Commands Documented:
         1. Single Number Analysis:
@@ -1874,15 +1878,20 @@ def print_usage():
         2. Sequence Equivalence Testing:
            - Syntax: python total_stopping_time_predictor.py --test-sequences <max_n>
            - Purpose: Validate algorithm correctness across a range
+        
+        3. Help Display:
+           - Syntax: python total_stopping_time_predictor.py [--help|-h|help]
+           - Purpose: Display this usage information
     
     Examples:
         >>> print_usage()
         # Outputs complete usage documentation
         
         Typical usage scenarios:
-        - User needs help: python total_stopping_time_predictor.py (no args) → calls print_usage()
+        - User needs help: python total_stopping_time_predictor.py --help
         - User wants analysis: python total_stopping_time_predictor.py 27
         - User wants validation: python total_stopping_time_predictor.py --test-sequences 1000
+        - Invalid input: Shows specific error + suggests --help
     
     Notes:
         - This function is automatically called when insufficient arguments provided
@@ -1891,18 +1900,35 @@ def print_usage():
         - Documents all available functionality in one place
         - Critical for CLI usability and user experience
         - Should be updated whenever new commands are added
+        - Supports multiple help command variants for user convenience
+        - Integrates with improved error handling system
     """
     print("Usage:")
     print("  python total_stopping_time_predictor.py <n>")
     print("  python total_stopping_time_predictor.py --test-sequences <max_n>")
+    print("  python total_stopping_time_predictor.py [--help | -h | help]")
     print("")
     print("Commands:")
-    print("  <n>                      Analyze single number")
+    print("  <n>                      Analyze single number (integer, float, or string)")
     print("  --test-sequences <max_n> Test sequences equivalence from 1 to max_n")
+    print("  --help, -h, help         Display this help information")
     print("")
     print("Examples:")
     print("  python total_stopping_time_predictor.py 27")
+    print("  python total_stopping_time_predictor.py \"100\"")
+    print("  python total_stopping_time_predictor.py 42.0")
     print("  python total_stopping_time_predictor.py --test-sequences 1000")
+    print("  python total_stopping_time_predictor.py --help")
+    print("")
+    print("Input Formats:")
+    print("  - Integers: 27, 100, 1")
+    print("  - Strings: \"27\", \"100\" (will be converted)")
+    print("  - Floats: 27.0, 100.0 (must be whole numbers)")
+    print("")
+    print("Error Examples:")
+    print("  python total_stopping_time_predictor.py abc     # Invalid format")
+    print("  python total_stopping_time_predictor.py 3.14    # Not a whole number")
+    print("  python total_stopping_time_predictor.py -5      # Must be positive")
 
 def main():
    """
