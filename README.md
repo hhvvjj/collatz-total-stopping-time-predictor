@@ -24,17 +24,17 @@ This project implements an advanced algorithm to predict the total stopping time
 
 ### Single Number Analysis
 ```bash
-python total_stopping_time_predictor.py 27
+python3 total_stopping_time_predictor.py 27
 ```
 
 ### Batch Validation Testing
 ```bash
-python total_stopping_time_predictor.py --test-sequences 1000
+python3 total_stopping_time_predictor.py --test-sequences 1000
 ```
 
 ### Help
 ```bash
-python total_stopping_time_predictor.py
+python3 total_stopping_time_predictor.py
 ```
 
 ## Performance Insights
@@ -72,7 +72,6 @@ The wormhole algorithm works by:
 - `total_stopping_time_predictor.py` - Main implementation
 - `README.md` - This documentation
 - `LICENSE` - License file
-
 
 ## License
 
