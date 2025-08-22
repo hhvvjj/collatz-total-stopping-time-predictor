@@ -1761,24 +1761,35 @@ def display_efficiency_table(standard_result: Dict, wormhole_result: Dict) -> No
         - Regular text: Standard algorithm and totals
     
     Examples:
+        For n=51 with wormhole optimization (best case):
+        ================================================================================
+        COMPUTATIONAL EFFICIENCY TABLE
+        ================================================================================
+        Method               Total Steps  Computed   Saved      % Saved
+        --------------------------------------------------------------------------------
+        Standard                      24        24       0       0.000%
+        Wormhole                      24         0      24     100.000%
+        ================================================================================
+
+
         For n=27 with wormhole optimization:
         ================================================================================
         COMPUTATIONAL EFFICIENCY TABLE
         ================================================================================
-        Method               Total Steps   Computed     Saved    % Saved
+        Method               Total Steps  Computed   Saved      % Saved
         --------------------------------------------------------------------------------
-        Standard                     111        111         0      0.000%
-        Wormhole                     111         27        84     75.676%
+        Standard                     111       111       0       0.000%
+        Wormhole                     111        16      95      85.586%
         ================================================================================
         
-        For n=5 without wormhole optimization:
+        For n=84 without wormhole optimization (worst case):
         ================================================================================
         COMPUTATIONAL EFFICIENCY TABLE
         ================================================================================
-        Method               Total Steps   Computed     Saved    % Saved
+        Method               Total Steps  Computed   Saved      % Saved
         --------------------------------------------------------------------------------
-        Standard                       5          5         0      0.000%
-        Wormhole                       5          5         0      0.000%
+        Standard                       9         9       0       0.000%
+        Wormhole                       9         9       0       0.000%
         ================================================================================
     
     Notes:
