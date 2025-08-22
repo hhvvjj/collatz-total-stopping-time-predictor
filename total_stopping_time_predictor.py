@@ -1905,117 +1905,138 @@ def print_usage():
     print("  python total_stopping_time_predictor.py --test-sequences 1000")
 
 def main():
-    """
-    Main entry point and command-line interface coordinator for the Collatz predictor application.
-    
-    This function serves as the central dispatcher that processes command-line arguments,
-    validates user input, and routes execution to the appropriate analysis or testing
-    functions. It provides comprehensive error handling and user feedback for all
-    supported operations.
-    
-    Supported Operations:
-    1. Single Number Analysis: Comprehensive analysis of one input number
-    2. Sequence Equivalence Testing: Batch validation across a range of numbers
-    3. Help Display: Usage information when arguments are insufficient or invalid
-    
-    Command Line Argument Processing:
-    - Validates minimum argument requirements
-    - Parses and routes commands to appropriate functions
-    - Handles both numeric inputs and command flags
-    - Provides meaningful error messages for invalid inputs
-    
-    Args:
-        None: Uses sys.argv to access command-line arguments directly.
-    
-    Returns:
-        None: This function coordinates execution and exits with appropriate status codes.
-    
-    Exit Codes:
-        - 0: Successful execution
-        - 1: Invalid arguments, input errors, or execution failures
-    
-    Command Line Formats:
-        1. python total_stopping_time_predictor.py <n>
-           - Performs complete analysis of number n
-           - Displays sequences, wormhole info, validation, and efficiency
-        
-        2. python total_stopping_time_predictor.py --test-sequences <max_n>
-           - Tests algorithm equivalence for range [1, max_n]
-           - Validates wormhole correctness across multiple inputs
-        
-        3. python total_stopping_time_predictor.py
-           - Displays usage information and exits
-    
-    Error Handling:
-        - Insufficient arguments: Shows usage and exits
-        - Invalid numeric inputs: Displays conversion errors
-        - Computation interruption: Handles Ctrl+C gracefully
-        - Unexpected errors: Captures and reports with diagnostic info
-    
-    Examples:
-        Command line usage:
-        $ python total_stopping_time_predictor.py 27
-        # Analyzes n=27 with full comparison
-        
-        $ python total_stopping_time_predictor.py --test-sequences 100
-        # Tests equivalence for n=1 to n=100
-        
-        $ python total_stopping_time_predictor.py
-        # Shows usage information
-        
-        $ python total_stopping_time_predictor.py invalid_input
-        # Shows usage and exits with error
-    
-    Notes:
-        - This function is the primary entry point for CLI execution
-        - Provides robust error handling for all execution paths
-        - Essential for user experience and application reliability
-        - Handles both interactive and automated execution scenarios
-        - Critical for proper application lifecycle management
-        - Ensures graceful handling of user interruptions and errors
-    """
-    try:
-        # Validate minimum command-line argument requirements
-        if len(sys.argv) < 2:
-            print_usage()
-            sys.exit(1)
-        
-        # Extract the primary command from command-line arguments
-        command = sys.argv[1]
-        
-        # Route 1: Sequence equivalence testing command
-        if command == "--test-sequences":
-            # Validate that maximum number parameter is provided
-            if len(sys.argv) < 2:
-                print("Error: --test-sequences requires a maximum number")
-                sys.exit(1)
-            try:
-                # Parse and validate the maximum number for testing range
-                max_n = int(sys.argv[2])
-                test_sequence_equivalence(max_n)
-            except ValueError:
-                # Handle invalid integer conversion
-                print("Error: Maximum number must be an integer")
-                sys.exit(1)
-        else:
-            # Route 2: Single number analysis command
-            try:
-                # Extract input number (can be string, will be validated internally)
-                n = command
-                display_complete_analysis(n) 
-            except:
-                # Handle any parsing or execution errors by showing usage
-                print_usage()
-                sys.exit(1)
-        
-    except KeyboardInterrupt:
-        # Handle user interruption (Ctrl+C) gracefully
-        print("\n\n[!] Computation interrupted by user")
-        sys.exit(1)
-    except Exception as e:
-        # Handle unexpected errors with diagnostic information
-        print(f"\n[!] UNEXPECTED ERROR: {e}")
-        sys.exit(1)
+   """
+   Main entry point and command-line interface coordinator for the Collatz predictor application.
+   
+   This function serves as the central dispatcher that processes command-line arguments,
+   validates user input, and routes execution to the appropriate analysis or testing
+   functions. It provides comprehensive error handling and user feedback for all
+   supported operations with improved help system and validation.
+   
+   Supported Operations:
+   1. Single Number Analysis: Comprehensive analysis of one input number
+   2. Sequence Equivalence Testing: Batch validation across a range of numbers
+   3. Help Display: Usage information via multiple command formats
+   
+   Command Line Argument Processing:
+   - Validates minimum argument requirements
+   - Parses and routes commands to appropriate functions
+   - Handles numeric inputs, command flags, and help requests
+   - Provides specific error messages for different failure types
+   - Distinguishes between help requests and invalid inputs
+   
+   Args:
+       None: Uses sys.argv to access command-line arguments directly.
+   
+   Returns:
+       None: This function coordinates execution and exits with appropriate status codes.
+   
+   Exit Codes:
+       - 0: Successful execution or help display
+       - 1: Invalid arguments, input errors, or execution failures
+   
+   Command Line Formats:
+       1. python total_stopping_time_predictor.py <n>
+          - Performs complete analysis of number n
+          - Displays sequences, wormhole info, validation, and efficiency
+       
+       2. python total_stopping_time_predictor.py --test-sequences <max_n>
+          - Tests algorithm equivalence for range [1, max_n]
+          - Validates wormhole correctness across multiple inputs
+       
+       3. python total_stopping_time_predictor.py [--help|-h|help]
+          - Displays usage information and exits successfully
+       
+       4. python total_stopping_time_predictor.py
+          - Shows usage information when no arguments provided
+   
+   Error Handling:
+       - Insufficient arguments: Shows usage and exits
+       - Invalid numeric inputs: Displays specific validation errors with guidance
+       - Help requests: Shows usage and exits successfully
+       - Computation interruption: Handles Ctrl+C gracefully
+       - Unexpected errors: Captures and reports with diagnostic info
+   
+   Examples:
+       Command line usage:
+       $ python total_stopping_time_predictor.py 27
+       # Analyzes n=27 with full comparison
+       
+       $ python total_stopping_time_predictor.py --test-sequences 100
+       # Tests equivalence for n=1 to n=100
+       
+       $ python total_stopping_time_predictor.py --help
+       # Shows usage information
+       
+       $ python total_stopping_time_predictor.py abc
+       # Shows "Error: Invalid number format: abc" with help guidance
+   
+   Notes:
+       - This function is the primary entry point for CLI execution
+       - Provides robust error handling for all execution paths with specific messaging
+       - Essential for user experience and application reliability
+       - Handles both interactive and automated execution scenarios
+       - Critical for proper application lifecycle management
+       - Ensures graceful handling of user interruptions and errors
+       - Improved help system allows multiple ways to request usage information
+       - Early input validation prevents confusion between help requests and invalid inputs
+   """
+   try:
+       # Validate minimum command-line argument requirements
+       if len(sys.argv) < 2:
+           print_usage()
+           sys.exit(1)
+       
+       # Extract the primary command from command-line arguments
+       command = sys.argv[1]
+       
+       # Route 1: Sequence equivalence testing command
+       if command == "--test-sequences":
+           # Validate that maximum number parameter is provided
+           if len(sys.argv) < 3:
+               print("Error: --test-sequences requires a maximum number")
+               sys.exit(1)
+           try:
+               # Parse and validate the maximum number for testing range
+               max_n = int(sys.argv[2])
+               test_sequence_equivalence(max_n)
+           except ValueError:
+               # Handle invalid integer conversion for test range parameter
+               print("Error: Maximum number must be an integer")
+               sys.exit(1)
+               
+       # Route 2: Help command variants (multiple formats supported)
+       elif command in ["--help", "-h", "help"]:
+           # Display usage information and exit successfully
+           print_usage()
+           sys.exit(0)
+           
+       else:
+           # Route 3: Single number analysis command
+           try:
+               # Perform early input validation to distinguish between help requests and invalid numbers
+               # This prevents confusion where invalid inputs might be interpreted as help requests
+               validate_input(command)  # Raises ValidationError for invalid formats
+               
+               # Input validation passed - proceed with comprehensive analysis
+               display_complete_analysis(command)
+               
+           except ValidationError as e:
+               # Handle specific input validation errors with clear messaging
+               # Provide specific error details and guidance for proper usage
+               print(f"Error: {e}")
+               print("\nUse --help for usage information")
+               sys.exit(1)
+       
+   except KeyboardInterrupt:
+       # Handle user interruption (Ctrl+C) gracefully
+       print("\n\n[!] Computation interrupted by user")
+       sys.exit(1)
+   except Exception as e:
+       # Handle unexpected errors with diagnostic information
+       # This catches system-level errors that shouldn't normally occur
+       print(f"\n[!] UNEXPECTED ERROR: {e}")
+       sys.exit(1)
 
 if __name__ == "__main__":
     main()
