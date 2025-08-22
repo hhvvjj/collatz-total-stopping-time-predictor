@@ -1178,7 +1178,7 @@ def test_sequence_equivalence(max_n: int) -> None:
     """
     # Display testing header with configuration information
     print("=" * 100)
-    print(f"  COLLATZ TOTAL STOPPING TIME PREDICTOR")
+    print("  COLLATZ TOTAL STOPPING TIME PREDICTOR")
     print("=" * 100)
     
     # Initialize statistics counters for tracking results
@@ -1297,7 +1297,7 @@ def display_equivalence_summary(max_n: int, identical_count: int, different_coun
     total_tested = max_n  # Total number of values tested in the range [1, max_n]
     
     # Display formatted summary header
-    print(f"\n" + "=" * 100)
+    print("\n" + "=" * 100)
     print("SEQUENCE EQUIVALENCE SUMMARY")
     print("=" * 100)
     
@@ -1326,13 +1326,13 @@ def display_equivalence_summary(max_n: int, identical_count: int, different_coun
         
         # Display wormhole optimization efficiency metrics (only when successful)
         if entry_points_used > 0:
-            print(f"\nWormholes usage:")
+            print("\nWormholes usage:")
             print(f"  Cases of n using wormholes: {entry_points_used} out of {total_tested} ({100*entry_points_used/total_tested:.3f}%)")
             print(f"  Total steps saved: {total_savings}")
             print(f"  Average steps saved per wormholes: {total_savings/entry_points_used:.3f}")
         
         # Display final success message
-        print(f"\nSUCCESS: All sequences are identical!")
+        print("\nSUCCESS: All sequences are identical!")
         print("The wormhole algorithm produced exactly the same results as standard algorithm.")
     
     # Display footer
@@ -1494,7 +1494,7 @@ def display_standard_and_predicted_sequences(n: int, wormhole_result: Dict) -> N
         - Uses ANSI escape codes for terminal color formatting
         - Complements the numerical analysis with intuitive visual representation
     """
-    print(f"\n\t= SEQUENCES ANALYSIS:")
+    print("\n\t= SEQUENCES ANALYSIS:")
     
     # Generate and display the standard (reference) sequence
     try:
@@ -1543,9 +1543,9 @@ def display_standard_and_predicted_sequences(n: int, wormhole_result: Dict) -> N
     else:
         # Cases where no wormhole optimization was applied
         if "no_entry_point" in wormhole_result["prediction_type"]:
-            print(f"\n\t   - Predicted sequence: No wormhole available before trivial cycle")
+            print("\n\t   - Predicted sequence: No wormhole available before trivial cycle")
         elif "trivial" in wormhole_result["prediction_type"]:
-            print(f"\n\t   - Predicted sequence: No wormhole needed for trivial cycle")
+            print("\n\t   - Predicted sequence: No wormhole needed for trivial cycle")
         else:
             print(f"\n\t   - Predicted sequence: Available wormhole {wormhole_result.get('entry_point_found', 'unknown')} is unusable")
 
@@ -1615,23 +1615,23 @@ def display_wormhole_info(wormhole_result: Dict) -> None:
             position = wormhole_result.get("entry_point_position")
             wormhole_len = wormhole_result.get("wormhole_length", 0)
             
-            print(f"\n\t= WORMHOLE DETECTION:\n")
+            print("\n\t= WORMHOLE DETECTION:\n")
             print(f"\t   - The wormhole entry point takes the value {entry_point} and it is reached at step {position}")
             
             # Assess optimization efficiency based on entry point position
             if position == 0:
                 # Best case scenario: input number itself is a wormhole entry point
-                print(f"\t   - This is the most efficient situation, when n equals an entry point of wormholes")
+                print("\t   - This is the most efficient situation, when n equals an entry point of wormholes")
             
             # Display wormhole characteristics and size information
             print(f"\t   - The wormhole has {wormhole_len} elements ({wormhole_len-1} steps)")
-            print(f"\t   - Strategy: Compute until it finds an entry point for wormhole, then use it")
+            print("\t   - Strategy: Compute until it finds an entry point for wormhole, then use it")
         
         else:
             # Case 2: No wormhole entry point was found (worst case scenario)
-            print(f"\n\t= WORMHOLE DETECTION:\n")
-            print(f"\t   - The wormhole entry point requires full steps, being the worst computational situation")
-            print(f"\t   - Strategy: Compute until repetition happens on the trivial cycle (1, 4, 2, 1)")
+            print("\n\t= WORMHOLE DETECTION:\n")
+            print("\t   - The wormhole entry point requires full steps, being the worst computational situation")
+            print("\t   - Strategy: Compute until repetition happens on the trivial cycle (1, 4, 2, 1)")
     
     # Note: Trivial case (n=1 or mr=0) don't require wormhole analysis as they complete immediately
 
@@ -1701,12 +1701,12 @@ def display_validation_results(validation: Dict) -> None:
         - Builds confidence in optimization results through mathematical proof
         - Supports debugging and troubleshooting of sequence discrepancies
     """
-    print(f"\n\t= WORMHOLE VALIDATION:\n")
+    print("\n\t= WORMHOLE VALIDATION:\n")
     
     # Check validation status and display appropriate results
     if validation["valid"]:
         # Validation successful: wormhole sequence is mathematically correct
-        print(f"\t   PASSED: Wormhole sequence matches standard sequence")
+        print("\t   PASSED: Wormhole sequence matches standard sequence")
     else:
         # Validation failed: display detailed error analysis
         print(f"\t   FAILED: {validation['error']}")
@@ -1821,7 +1821,7 @@ def display_efficiency_table(standard_result: Dict, wormhole_result: Dict) -> No
     if saved_steps > 0 and standard_time > 0:
         # Case: Wormhole optimization was successfully applied
         saved_pct = (saved_steps / standard_time) * 100
-        efficiency_gain = f"Well-known entry point detected to access a wormhole"
+        efficiency_gain = "Well-known entry point detected to access a wormhole"
     else:
         # Case: No wormhole optimization available or applied
         saved_pct = 0.0
