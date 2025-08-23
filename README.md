@@ -1,7 +1,7 @@
 # Collatz Total Stopping Time Predictor
 
 [![Python](https://img.shields.io/badge/python-3.6%2B-blue.svg)](https://www.python.org/downloads/)
-[![License](https://img.shields.io/badge/license-CC--BY--NC--SA%204.0-green.svg)](https://github.com/hhvvjj/collatz-tuple-based-transform-calculator/blob/main/LICENSE)
+[![License](https://img.shields.io/badge/license-CC--BY--NC--SA%204.0-green.svg)](https://github.com/hhvvjj/collatz-total-stopping-time-predictor/blob/main/LICENSE)
 [![Research](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.15546925-orange.svg)](https://doi.org/10.5281/zenodo.15546925)
 
 ## Overview
@@ -19,6 +19,20 @@ This project implements an advanced algorithm to predict the total stopping time
 - **Comprehensive Analysis**: Provides detailed sequence analysis and efficiency metrics
 - **Batch Testing**: Validates algorithm correctness across ranges of inputs
 - **Visual Output**: Color-coded display showing computed vs optimized portions
+
+
+## Requirements
+
+- Python 3.6 or higher
+- No external dependencies required
+
+## Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/hhvvjj/collatz-total-stopping-time-predictor.git
+cd collatz-total-stopping-time-predictor
+```
 
 ## Usage
 
@@ -62,16 +76,33 @@ The wormhole algorithm works by:
 3. Validating mathematical correctness of the optimization
 4. Reporting efficiency metrics and computational savings
 
-## Requirements
+## Contributing
 
-- Python 3.6+
-- No external dependencies (uses only standard library)
+Contributions are welcome! Please ensure:
 
+1. **Mathematical Accuracy**: Verify against published theorems
+2. **Code Quality**: Follow existing style and documentation standards
+3. **Testing**: Include examples demonstrating new features
+4. **Documentation**: Update README and docstrings as needed
+
+## Citation
+
+If you use this code in your research, please cite:
+
+```bibtex
+@software{total_stopping_time_predictor,
+  title={Collatz Total Stopping Time Predictor},
+  author={[Javier Hernandez]},
+  year={2025},
+  url={https://github.com/hhvvjj/collatz-total-stopping-time-predictor.git},
+  note={Implementation based on research DOI: 10.5281/zenodo.15546925}
+}
+```
 ## Files
 
-- `total_stopping_time_predictor.py` - Main implementation
-- `README.md` - This documentation
-- `LICENSE` - License file
+    total_stopping_time_predictor.py - Main implementation
+    README.md - This documentation
+    LICENSE - License file
 
 ## License
 
